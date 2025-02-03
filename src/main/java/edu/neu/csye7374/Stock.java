@@ -4,24 +4,11 @@ public abstract class Stock implements Tradable {
     private String id;
     private double price;
     private String description;
-    private String currentBid;
 
     public Stock(String id, double price, String description) {
         this.id = id;
         this.price = price;
         this.description = description;
-    }
-
-    @Override
-    public void setBid(String bid) {
-        try {
-            double bidValue = Double.parseDouble(bid);
-            if (currentBid == null || Double.parseDouble(currentBid) < bidValue) {
-                currentBid = bid;
-            }
-        } catch (NumberFormatException e) {
-            System.out.println("Invalid bid format: " + bid);
-        }
     }
 
     public String getId() {
@@ -32,7 +19,7 @@ public abstract class Stock implements Tradable {
         return price;
     }
 
-    public void setPrice(double price) {
+    protected void setPrice(double price) {
         this.price = price;
     }
 
@@ -42,9 +29,11 @@ public abstract class Stock implements Tradable {
 
     @Override
     public String toString() {
-        return "Stock ID: " + id + "\n" +
-                "Price: $" + String.format("%.2f", price) + "\n" +
-                "Description: " + description + "\n" +
-                "Current Bid: $" + (currentBid != null ? currentBid : "No bids yet");
+        return String.format("\nStock: %-10s | Price: $%.2f\n%s", id, price, "-".repeat(45));
+    }
+
+    public String getSummary() {
+        return String.format("Stock Summary → [ Name: %s | Price: $%.2f | Sector: %s | Metric: %.2f%% ]",
+                id, price, description, (double) getMetric());
     }
 }

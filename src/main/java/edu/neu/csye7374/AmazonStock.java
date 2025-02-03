@@ -4,12 +4,11 @@ public class AmazonStock extends Stock {
     private double highestBid = 0.0;
 
     public AmazonStock() {
-        super("AMZN", 3200.50, "Amazon Inc.");
+        super("AMZN", 3200.50, "E-Commerce & Cloud");
     }
 
     @Override
     public void setBid(String bid) {
-        super.setBid(bid);
         try {
             double bidValue = Double.parseDouble(bid);
             highestBid = Math.max(highestBid, bidValue);

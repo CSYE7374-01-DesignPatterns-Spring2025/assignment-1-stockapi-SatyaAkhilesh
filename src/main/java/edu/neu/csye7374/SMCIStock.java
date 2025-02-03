@@ -12,7 +12,6 @@ public class SMCIStock extends Stock {
 
     @Override
     public void setBid(String bid) {
-        super.setBid(bid);
         try {
             double bidValue = Double.parseDouble(bid);
             bids.add(bidValue);

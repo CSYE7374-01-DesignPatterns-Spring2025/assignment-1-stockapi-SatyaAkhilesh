@@ -4,12 +4,11 @@ public class GoogleStock extends Stock {
     private double highestBid = 0.0;
 
     public GoogleStock() {
-        super("GOOGL", 2800.00, "Google LLC");
+        super("GOOGL", 2800.00, "Search & AI");
     }
 
     @Override
     public void setBid(String bid) {
-        super.setBid(bid);
         try {
             double bidValue = Double.parseDouble(bid);
             highestBid = Math.max(highestBid, bidValue);

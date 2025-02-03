@@ -9,11 +9,10 @@ public class JPMStock extends Stock {
 
     @Override
     public void setBid(String bid) {
-        super.setBid(bid);
         try {
             double bidValue = Double.parseDouble(bid);
             highestBid = Math.max(highestBid, bidValue);
-            setPrice(getPrice() + 0.05 * (highestBid - getPrice())); // Adjust price by 5%.
+            setPrice(getPrice() + 0.05 * (highestBid - getPrice()));
         } catch (NumberFormatException e) {
             System.out.println("Invalid bid format: " + bid);
         }
